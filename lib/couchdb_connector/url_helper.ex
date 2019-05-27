@@ -118,6 +118,11 @@ defmodule Couchdb.Connector.UrlHelper do
     admin_url(Map.merge(db_props, %{user: admin_name, password: password}), admin_name)
   end
 
+  @spec all_documents_url(Types.db_properties) :: String.t
+  def all_documents_url db_props do
+    "#{database_url(db_props)}/_all_docs"
+  end
+
   @doc """
   Produces the URL to the database's security object. Requires admin
   credentials.

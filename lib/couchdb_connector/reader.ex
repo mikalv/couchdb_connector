@@ -34,6 +34,13 @@ defmodule Couchdb.Connector.Reader do
     |> do_get
   end
 
+  @spec get(Types.db_properties, String.t) :: {:ok, String.t} | {:error, String.t}
+  def get_all(db_props) do
+    db_props
+    |> UrlHelper.all_documents_url()
+    |> do_get
+  end
+
   @doc """
   Fetch a single uuid from CouchDB for use in a a subsequent create operation.
   This operation requires no authentication.
